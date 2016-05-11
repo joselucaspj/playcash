@@ -21,6 +21,34 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		//echo base_url('resources/css/bootstrap.min.css');
+		 $this->load->model('municipios');
+		// //$this->load->model('municipios');
+
+		// $estados = $this->municipios->retorna_estados();
+		// //echo $this->db;
+		// $option = "<option value=''></option>";
+		// foreach($estados->result() as $linha) {
+		// 	$option .= "<option value='$linha->cod_estado'>$linha->cod_estado</option>"; 
+		// }
+		// $options=  array('sigla_estados' => $option );
 		$this->load->view('welcome');
 	}
+
+	public function busca_municipio(){
+		$this->load->model('municipios');
+		$id_muncipio = $this->input->post("id_muncipio");
+		$municipios = $this->municipios->retorna_municipios();
+		//echo $this->db;
+		$option = "<option value=''></option>";
+		foreach($municipios->result() as $linha) {
+
+				$option .= "<option value='$linha->id'>$linha->nome</option>"; 
+			
+		}
+
+		echo $option;
+
+	}
+
+
 }
