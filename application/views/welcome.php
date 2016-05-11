@@ -26,6 +26,7 @@ if(isset($data)){
 				$option .= "<option value='$linha->cod_estado'>$linha->cod_estado</option>"; 
 			
 		}
+		echo base_url("Welcome/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,11 +44,11 @@ if(isset($data)){
   </head>
   <script>
 		
-		var base_url = '<?php base_url() ?>';
+		var base_url = '<?php echo base_url("Welcome") ?>';
 		
 		function busca_municipio(cod_estado){
 			
-			$.post(base_url+"Welcome/busca_municipio", {
+			$.post(base_url+"/busca_municipio", {
 				cod_estado : cod_estado,
 				
 			}, function(data){
